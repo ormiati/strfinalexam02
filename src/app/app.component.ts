@@ -17,4 +17,14 @@ export class AppComponent {
   constructor(
     private todoService: TodoService,
   ) {}
+
+  onDelete(todo: Todo) : void {
+    alert('A kiválasztott listaelem törlődni fog! Biztosan ezt akarja?')
+    this.todoService.delete(todo).subscribe(
+      ()=>{
+        this.todos$=this.todoService.getAll();
+      }
+    )
+  }
+
 }
