@@ -14,15 +14,21 @@
         <div class="form-group">
           <label>Title</label>
           <!-- Kötelező kitölteni, kisbetűk, nagybetűk, számok, szóköz, legalább 5 karakter. -->
-          <input name="title" [(ngModel)]="selectedTodo.title" type="text" class="form-control">
+          <input required pattern="[A-Űa-ű0-9 ]{5,}" name="title" [(ngModel)]="selectedTodo.title" type="text" class="form-control">
+          <div [hidden]="todoForm.controls.title?.valid || todoForm.controls.title.pristine" class="error-message">
+            Legalább 5 karakterből kell állnia, és csak kis- és nagybetűt számot valamint szóközt tartalmazhat!
+          </div>
         </div>
         <div class="form-group">
           <label>Description</label>
           <!-- Kötelező kitölteni, kisbetűk, nagybetűk, számok, szóköz, legalább 25 karakter. -->
-          <textarea name="description" [(ngModel)]="selectedTodo.description" class="form-control">
+          <textarea required pattern="[A-Űa-ű0-9 ]{25,}" name="description" [(ngModel)]="selectedTodo.description" class="form-control">
             </textarea>
+            <div [hidden]="todoForm.controls.description?.valid || todoForm.controls.description.pristine" class="error-message">
+              Legalább 25 karakterből kell állnia, és csak kis- és nagybetűt számot valamint szóközt tartalmazhat!
+            </div>
         </div>
-        <button class="btn btn-primary btn-block mt-2">
+        <button [disabled]="todoForm.invalid" class="btn btn-primary btn-block mt-2">
           <i class="fa fa-save"></i>
         </button>
       </form>
