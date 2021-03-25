@@ -37,6 +37,10 @@ export class AppComponent {
 
   onColumnSelect(key: string): void {
     this.sorting = key;
-}
-
+  }
+  
+  onUpdate(todo: Todo): void {
+    todo.active= !todo.active;
+    this.todoService.update(todo).subscribe()
+  }
 }
