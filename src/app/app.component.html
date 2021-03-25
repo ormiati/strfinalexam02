@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-12 col-md-8 offset-md-2 mt-5">
       <h3>Create a Todo</h3>
-      <form #todoForm="ngForm">
+      <form #todoForm="ngForm" (ngSubmit)="onCreate(selectedTodo)">
         <div class="form-group">
           <label>Title</label>
           <!-- Kötelező kitölteni, kisbetűk, nagybetűk, számok, szóköz, legalább 5 karakter. -->
