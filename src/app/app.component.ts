@@ -14,6 +14,8 @@ export class AppComponent {
 
   selectedTodo: Todo = new Todo();
 
+  phrase: string='';
+
   constructor(
     private todoService: TodoService,
   ) {}
@@ -25,6 +27,10 @@ export class AppComponent {
         this.todos$=this.todoService.getAll();
       }
     )
+  }
+
+  onChangePhrase(event:Event): void {
+    this.phrase=(event.target as HTMLInputElement).value;
   }
 
 }
