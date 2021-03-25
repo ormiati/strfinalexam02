@@ -16,6 +16,8 @@ export class AppComponent {
 
   phrase: string='';
 
+  sorting: string='';
+
   constructor(
     private todoService: TodoService,
   ) {}
@@ -32,5 +34,9 @@ export class AppComponent {
   onChangePhrase(event:Event): void {
     this.phrase=(event.target as HTMLInputElement).value;
   }
+
+  onColumnSelect(key: string): void {
+    this.sorting = key;
+}
 
 }
